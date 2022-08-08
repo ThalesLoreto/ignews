@@ -15,10 +15,7 @@ type UserFauna = {
   };
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const session = await getSession({ req });
 
@@ -70,4 +67,6 @@ export default async function handler(
     res.setHeader('Allow', 'POST');
     res.status(405).end('Method now allowed.');
   }
-}
+};
+
+export default handler;
